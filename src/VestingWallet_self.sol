@@ -80,7 +80,7 @@ contract VestingWallet is Context, Ownable {
     }
 
     function release(address token) public{
-        uint256 amount = released(token);
+        uint256 amount = releasable(token);
         _erc20Released[token] += amount;
         emit ERC20Released(token,amount);
         SafeERC20.safeTransfer(IERC20(token),owner(),amount);
